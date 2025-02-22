@@ -1,0 +1,926 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+   <head>
+      <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+      <meta name="description" content="{{project.meta.ogDescription}}">
+      <meta name="theme-color" content="#ffffff">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="robots" content="{{project.meta.robotsMeta}}">
+      
+      <title>{{project.seoTitle}}</title>
+      <!-- SEO Description -->
+      <meta name="description" content="{{project.seoDescription}}">
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+       
+      
+      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+      <!-- Performance optimization: Preload critical resources -->
+      <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+      
+      <!-- Header Scripts -->
+      <script id="header-scripts">
+        // This script tag will be replaced with actual scripts.head content
+        if (window.scripts && window.scripts.head) {
+          document.getElementById('header-scripts').outerHTML = window.scripts.head;
+        }
+      </script>
+
+      <!-- Preconnect -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+      <!-- Font stylesheet -->
+
+      <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+
+      <!-- Core CSS -->
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                primary: {
+                  DEFAULT: '{{settings.colors.primary}}',
+                  50: '#f8f8f8',
+                  100: '#e8e8e8', 
+                  200: '#d3d3d3',
+                  300: '#a3a3a3',
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+                secondary: {
+                  DEFAULT: '{{settings.colors.secondary}}',
+                  50: '#f8f8f8',
+                  100: '#e8e8e8',
+                  200: '#d3d3d3', 
+                  300: '#a3a3a3',
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+                accent: {
+                  DEFAULT: '{{settings.colors.accent}}',
+                  50: '#f8f8f8',
+                  100: '#e8e8e8',
+                  200: '#d3d3d3',
+                  300: '#a3a3a3', 
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+              },
+              fontFamily: {
+                sans: ['{{settings.fonts.primary}}', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                heading: ['{{settings.fonts.secondary}}', 'Inter', 'system-ui', 'sans-serif'],
+                body: ['{{settings.fonts.secondary}}', 'Inter', 'system-ui', 'sans-serif'],
+              },
+              spacing: {
+                '18': '4.5rem',
+                '22': '5.5rem',
+                '30': '7.5rem',
+              },
+              maxWidth: {
+                '8xl': '88rem',
+                '9xl': '96rem',
+              },
+              animation: {
+                'fade-in': 'fadeIn 0.5s ease-in',
+                'fade-out': 'fadeOut 0.5s ease-out',
+                'slide-up': 'slideUp 0.5s ease-out',
+                'slide-down': 'slideDown 0.5s ease-out',
+                'slide-left': 'slideLeft 0.5s ease-out',
+                'slide-right': 'slideRight 0.5s ease-out',
+                'scale-in': 'scaleIn 0.5s ease-out',
+                'scale-out': 'scaleOut 0.5s ease-out',
+                'spin-slow': 'spin 3s linear infinite',
+                'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'bounce-slow': 'bounce 3s infinite',
+                'float': 'float 3s ease-in-out infinite',
+              },
+              keyframes: {
+                fadeIn: {
+                  '0%': { opacity: '0' },
+                  '100%': { opacity: '1' },
+                },
+                fadeOut: {
+                  '0%': { opacity: '1' },
+                  '100%': { opacity: '0' },
+                },
+                slideUp: {
+                  '0%': { transform: 'translateY(20px)', opacity: '0' },
+                  '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                slideDown: {
+                  '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                  '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                slideLeft: {
+                  '0%': { transform: 'translateX(20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                slideRight: {
+                  '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                scaleIn: {
+                  '0%': { transform: 'scale(0.9)', opacity: '0' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                },
+                scaleOut: {
+                  '0%': { transform: 'scale(1.1)', opacity: '0' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                },
+                float: {
+                  '0%, 100%': { transform: 'translateY(0)' },
+                  '50%': { transform: 'translateY(-10px)' },
+                },
+              },
+              aspectRatio: {
+                'portrait': '3/4',
+                'landscape': '4/3',
+                'ultrawide': '21/9',
+              },
+            },
+          },
+          variants: {
+            extend: {
+              opacity: ['disabled'],
+              cursor: ['disabled'],
+              backgroundColor: ['active', 'disabled'],
+              textColor: ['active', 'disabled'],
+            },
+          },
+        }
+      });
+      </script>
+
+      <!-- Utilities and Components -->
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.45.1/apexcharts.min.js"></script>
+      
+      <!-- Optimized Font Loading -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      
+      <!-- Icons -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+      <!-- Dynamic Meta Tags -->
+      <meta name="description" content="{{project.meta.ogDescription}}">
+      <meta name="keywords" content="{{project.meta.keywords}}">
+      <meta name="robots" content="{{project.meta.robotsMeta}}">
+      <meta name="google-site-verification" content="{{project.meta.googleVerification}}">
+      <meta name="baidu-verification" content="{{project.meta.baiduVerification}}">
+      <meta name="yandex-verification" content="{{project.meta.yandexVerification}}">
+      <meta name="bing-verification" content="{{project.meta.bingVerification}}">
+      <meta property="og:title" content="{{project.meta.ogTitle}}">
+      <meta property="og:description" content="{{project.meta.ogDescription}}">
+      <meta property="og:image" content="{{project.meta.ogImage}}">
+      <meta property="og:type" content="website">
+      <meta property="og:locale" content="en_US">
+      <meta property="og:site_name" content="{{project.name}}">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="{{project.meta.ogTitle}}">
+      <meta name="twitter:description" content="{{project.meta.ogDescription}}">
+      <meta name="twitter:image" content="{{project.meta.ogImage}}">
+    
+      
+      <link rel="icon" type="image/x-icon" href="{{settings.favicon}}">
+      
+      <style>
+        h1, h2, h3, h4, h5, h6 {
+          font-family: {{settings.fonts.primary}}, Inter, system-ui, sans-serif;
+        }
+        body {
+          font-family: {{settings.fonts.secondary}}, Inter, system-ui, sans-serif;
+        }
+      </style>
+   </head>
+   <body class="antialiased text-gray-800 min-h-screen flex flex-col">
+      <!-- Skip to main content link for accessibility -->
+      <a href="#main-content" 
+         class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-white focus:text-black">
+         Skip to main content
+      </a>
+
+      <!-- Main content area -->
+      <main id="main-content" class="flex-1 relative h-full">
+        <!-- Content will be injected here -->
+      </main>
+
+      <!-- {bodyScripts} -->
+      
+   </body>
+</html><script>window.projectId = "8ae1c47c-f3be-446d-8dd3-f65dcf826ac7";</script><div id='RolloutPageContent'><element id="9094b984-fc93-4998-a42e-0556b7aacd72" data-section-id="9094b984-fc93-4998-a42e-0556b7aacd72">
+
+
+<div id="root">
+    <section id="header" class="relative">
+        <!-- Navigation -->
+        <nav class="fixed w-full z-50 bg-neutral-900/80 backdrop-blur-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo/Name -->
+                    <div class="flex-shrink-0">
+                        <a href="#hero" class="text-white font-bold text-xl font-['Poppins']">AW</a>
+                    </div>
+
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#hero" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300">Home</a>
+                            <a href="#about" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300">About</a>
+                            <a href="#education" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300">Education</a>
+                            <a href="#experience" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300">Experience</a>
+                            <a href="#skills" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300">Skills</a>
+                            <a href="#projects" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300">Projects</a>
+                            <a href="#contact" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300">Contact</a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden">
+                        <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-neutral-800 focus:outline-none">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden bg-neutral-900/95 backdrop-blur-sm">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#hero" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                    <a href="#education" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Education</a>
+                    <a href="#experience" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                    <a href="#projects" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="min-h-[70vh] flex items-center justify-center bg-neutral-900">
+            <div class="bg-neutral-800/30 backdrop-blur-sm p-8 rounded-xl border border-neutral-700/30 max-w-4xl mx-4 animate__animated animate__fadeIn">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 font-['Poppins']">Atharva Rajiv Weginwar</h1>
+                <h2 class="text-xl md:text-2xl text-gray-300 mb-6 font-['Inter']">AI Engineer | ML Specialist</h2>
+                <div class="flex flex-wrap gap-4">
+                    <a href="mailto:weginwaratharva99@gmail.com" class="text-white hover:text-blue-400 transition-all duration-300">
+                        <span class="flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                            </svg>
+                            weginwaratharva99@gmail.com
+                        </span>
+                    </a>
+                    <span class="text-white">|</span>
+                    <span class="text-white flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                        </svg>
+                        San Francisco
+                    </span>
+                    <span class="text-white">|</span>
+                    <span class="text-white flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                        </svg>
+                        408-592-3474
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('mobile-menu');
+            const button = document.getElementById('mobile-menu-button');
+            if (!menu.contains(event.target) && !button.contains(event.target)) {
+                menu.classList.add('hidden');
+            }
+        });
+
+        // Add hover effect to glassmorphism cards
+        document.querySelectorAll('.bg-neutral-800/30').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'scale(1.02)';
+                card.style.transition = 'all 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</div>
+</element><element id="7ec43eb8-106f-491f-b1f4-5999e275bdfd" data-section-id="7ec43eb8-106f-491f-b1f4-5999e275bdfd">
+
+
+<div id="root">
+    <section id="hero" class="min-h-screen bg-neutral-900 pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Left Column -->
+                <div class="space-y-8 animate__animated animate__fadeInLeft">
+                    <div class="bg-neutral-800/30 backdrop-blur-sm p-8 rounded-xl border border-neutral-700/30 hover:bg-neutral-800/40 transition-all duration-300">
+                        <h1 class="text-4xl font-bold text-white mb-4 font-['Poppins']">Atharva Rajiv Weginwar</h1>
+                        <p class="text-xl text-gray-300 font-['Inter']">AI Engineer & ML Specialist</p>
+                        <div class="mt-6 space-y-3">
+                            <p class="text-gray-300 flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                                </svg>
+                                San Francisco, CA
+                            </p>
+                            <p class="text-gray-300 flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                </svg>
+                                weginwaratharva99@gmail.com
+                            </p>
+                            <p class="text-gray-300 flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                                </svg>
+                                408-592-3474
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="space-y-8 animate__animated animate__fadeInRight">
+                    <div class="bg-neutral-800/30 backdrop-blur-sm p-8 rounded-xl border border-neutral-700/30 hover:bg-neutral-800/40 transition-all duration-300">
+                        <h2 class="text-2xl font-bold text-white mb-6 font-['Poppins']">Professional Summary</h2>
+                        <p class="text-gray-300 mb-4 font-['Inter']">AI Engineer and Machine Learning specialist with expertise in developing scalable AI solutions using cutting-edge technologies. Experienced in implementing RAG applications, LLM models, and cloud infrastructure optimization.</p>
+                        <div class="flex gap-4 mt-6">
+                            <a href="https://www.linkedin.com/in/atharvaweginwar/" target="_blank" class="text-blue-400 hover:text-blue-300 transition-all duration-300">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/Atharva-Weginwar" target="_blank" class="text-gray-300 hover:text-white transition-all duration-300">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</element><element id="4ffed82c-8f8c-461d-85e2-42c34e3c660f" data-section-id="4ffed82c-8f8c-461d-85e2-42c34e3c660f">
+
+
+<div id="root">
+    <section id="about" class="py-20 bg-neutral-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center font-['Poppins'] animate__animated animate__fadeIn">About Me</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Skills Overview -->
+                <div class="bg-neutral-700/30 backdrop-blur-sm p-8 rounded-xl border border-neutral-600/30 hover:bg-neutral-700/40 transition-all duration-300 animate__animated animate__fadeInLeft">
+                    <h3 class="text-2xl font-bold text-white mb-6 font-['Poppins']">Technical Expertise</h3>
+                    <div class="space-y-4">
+                        <div class="bg-neutral-800/40 p-4 rounded-lg hover:bg-neutral-800/60 transition-all duration-300">
+                            <h4 class="text-blue-400 font-semibold mb-2">Languages</h4>
+                            <p class="text-gray-300">Python, SQL, JavaScript, React, C++, HTML, CSS</p>
+                        </div>
+                        <div class="bg-neutral-800/40 p-4 rounded-lg hover:bg-neutral-800/60 transition-all duration-300">
+                            <h4 class="text-blue-400 font-semibold mb-2">Machine Learning & AI</h4>
+                            <p class="text-gray-300">TensorFlow, Scikit-learn, PyTorch, LLM, AI Agents, RAG, TensorRT, NLP, BERT, Langchain, Langgraph</p>
+                        </div>
+                        <div class="bg-neutral-800/40 p-4 rounded-lg hover:bg-neutral-800/60 transition-all duration-300">
+                            <h4 class="text-blue-400 font-semibold mb-2">Cloud & Tools</h4>
+                            <p class="text-gray-300">AWS Lambda, AWS Bedrock, S3, NVIDIA NIM, Pinecone, Chromadb, ETL, CI/CD, Docker, Streamlit</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Summary -->
+                <div class="bg-neutral-700/30 backdrop-blur-sm p-8 rounded-xl border border-neutral-600/30 hover:bg-neutral-700/40 transition-all duration-300 animate__animated animate__fadeInRight">
+                    <h3 class="text-2xl font-bold text-white mb-6 font-['Poppins']">Professional Focus</h3>
+                    <div class="space-y-6 text-gray-300">
+                        <p class="leading-relaxed">Specialized in developing and implementing advanced AI solutions with a focus on RAG applications and LLM models. Experienced in optimizing cloud infrastructure and building scalable machine learning pipelines.</p>
+                        
+                        <div class="bg-neutral-800/40 p-4 rounded-lg hover:bg-neutral-800/60 transition-all duration-300">
+                            <h4 class="text-blue-400 font-semibold mb-2">Analytical Expertise</h4>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Causal Inference (LiNGAM, DoWhy)</li>
+                                <li>Anomaly Attribution</li>
+                                <li>Feature Engineering</li>
+                                <li>Data Embedding</li>
+                                <li>Model Evaluation Metrics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</element><element id="f97122b5-2ddd-4972-ab13-b6f28334a7e2" data-section-id="f97122b5-2ddd-4972-ab13-b6f28334a7e2">
+
+
+<div id="root">
+    <section id="education" class="py-20 bg-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center font-['Poppins'] animate__animated animate__fadeIn">Education</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-neutral-800/30 backdrop-blur-sm p-8 rounded-xl border border-neutral-700/30 hover:bg-neutral-800/40 transition-all duration-300 animate__animated animate__fadeInUp">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white font-['Poppins']">Santa Clara University</h3>
+                            <p class="text-blue-400 mt-1">Master of Science in Computer Science</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <p class="text-gray-300">Sept 2023 – March 2025</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-neutral-700/30 p-4 rounded-lg flex items-center justify-between hover:bg-neutral-700/40 transition-all duration-300">
+                            <span class="text-gray-300">Current GPA</span>
+                            <span class="text-white font-semibold">3.93/4.0</span>
+                        </div>
+                        
+                        <div class="bg-neutral-700/30 p-4 rounded-lg hover:bg-neutral-700/40 transition-all duration-300">
+                            <h4 class="text-blue-400 font-semibold mb-2">Key Focus Areas</h4>
+                            <ul class="text-gray-300 space-y-2">
+                                <li class="flex items-center">
+                                    <svg class="w-4 h-4 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    Machine Learning & Artificial Intelligence
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-4 h-4 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    Advanced Algorithms & Data Structures
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-4 h-4 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    Cloud Computing & Distributed Systems
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</element><element id="4f272fcb-c5cc-4ff8-ae0e-e4f0d4e6b46d" data-section-id="4f272fcb-c5cc-4ff8-ae0e-e4f0d4e6b46d">
+
+
+<div id="root">
+    <section id="experience" class="py-20 bg-neutral-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center font-['Poppins'] animate__animated animate__fadeIn">Professional Experience</h2>
+            
+            <div class="space-y-8">
+                <!-- Bon AI -->
+                <div class="bg-neutral-700/30 backdrop-blur-sm p-8 rounded-xl border border-neutral-600/30 hover:bg-neutral-700/40 transition-all duration-300 animate__animated animate__fadeInUp">
+                    <div class="flex flex-col md:flex-row justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white font-['Poppins']">AI Engineer</h3>
+                            <p class="text-blue-400 mt-1">Bon AI – Palo Alto, CA</p>
+                        </div>
+                        <p class="text-gray-300 mt-2 md:mt-0">Oct 2024 – Current</p>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Designed and deployed a Multi-Agentic RAG application using AWS Lambda and Bedrock, improving query accuracy by 40%
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Optimized AI workflows and pipelines, reducing processing time by 35% and enhancing model performance
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Implemented scalable cloud solutions, reducing infrastructure costs by 50% and improving uptime
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Integrated feedback loops to fine-tune retrieval algorithms, increasing system scalability and client satisfaction
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- HP Inc -->
+                <div class="bg-neutral-700/30 backdrop-blur-sm p-8 rounded-xl border border-neutral-600/30 hover:bg-neutral-700/40 transition-all duration-300 animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+                    <div class="flex flex-col md:flex-row justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white font-['Poppins']">AI Engineer</h3>
+                            <p class="text-blue-400 mt-1">HP Inc – Palo Alto, CA</p>
+                        </div>
+                        <p class="text-gray-300 mt-2 md:mt-0">Jun 2024 – Sep 2024</p>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Built multi-LLM chatbots on AWS to analyze revenue factors, improving weekly sales forecasting accuracy by 25%
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Applied causal inference (LiNGAM, DoWhy) and anomaly detection, boosting revenue predictability by 15%
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Developed dashboards to visualize model predictions and track performance
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Recognized with the Best Intern Project Award out of 25 projects for innovative AI applications
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Cognizant -->
+                <div class="bg-neutral-700/30 backdrop-blur-sm p-8 rounded-xl border border-neutral-600/30 hover:bg-neutral-700/40 transition-all duration-300 animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+                    <div class="flex flex-col md:flex-row justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white font-['Poppins']">Machine Learning Engineer</h3>
+                            <p class="text-blue-400 mt-1">Cognizant Technology Solutions – India</p>
+                        </div>
+                        <p class="text-gray-300 mt-2 md:mt-0">Sep 2021 – Aug 2023</p>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Developed a search relevance ranking system using Linear and Logistic Regression, improving search accuracy
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Optimized ranking models through A/B testing and enhanced user engagement
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Mitigated the lack of negative samples, improving model robustness
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Applied regularization techniques to boost performance on imbalanced datasets
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</element><element id="ff9611a4-5bef-4a7a-8412-72a113cb12d4" data-section-id="ff9611a4-5bef-4a7a-8412-72a113cb12d4">
+
+
+<div id="root">
+    <section id="skills" class="py-20 bg-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center font-['Poppins'] animate__animated animate__fadeIn">Technical Skills</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Languages -->
+                <div class="bg-neutral-800/30 backdrop-blur-sm p-6 rounded-xl border border-neutral-700/30 hover:bg-neutral-800/40 transition-all duration-300 animate__animated animate__fadeInUp">
+                    <h3 class="text-xl font-bold text-white mb-4 font-['Poppins']">Languages</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">Python</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">SQL</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">JavaScript</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">React</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">C++</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">HTML</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">CSS</span>
+                    </div>
+                </div>
+
+                <!-- Machine Learning & AI -->
+                <div class="bg-neutral-800/30 backdrop-blur-sm p-6 rounded-xl border border-neutral-700/30 hover:bg-neutral-800/40 transition-all duration-300 animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+                    <h3 class="text-xl font-bold text-white mb-4 font-['Poppins']">Machine Learning & AI</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">TensorFlow</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">Scikit-learn</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">PyTorch</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">LLM</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">AI Agents</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">RAG</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">TensorRT</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">NLP</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">BERT</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">Langchain</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">Langgraph</span>
+                    </div>
+                </div>
+
+                <!-- Cloud & Tools -->
+                <div class="bg-neutral-800/30 backdrop-blur-sm p-6 rounded-xl border border-neutral-700/30 hover:bg-neutral-800/40 transition-all duration-300 animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+                    <h3 class="text-xl font-bold text-white mb-4 font-['Poppins']">Cloud & Tools</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">AWS Lambda</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">AWS Bedrock</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">S3</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">NVIDIA NIM</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">Pinecone</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">Chromadb</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">ETL</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">CI/CD</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">Docker</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">Streamlit</span>
+                    </div>
+                </div>
+
+                <!-- Analytical Techniques -->
+                <div class="bg-neutral-800/30 backdrop-blur-sm p-6 rounded-xl border border-neutral-700/30 hover:bg-neutral-800/40 transition-all duration-300 animate__animated animate__fadeInUp col-span-1 md:col-span-2 lg:col-span-3" style="animation-delay: 0.6s">
+                    <h3 class="text-xl font-bold text-white mb-4 font-['Poppins']">Analytical Techniques</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">Causal Inference (LiNGAM, DoWhy)</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">Anomaly Attribution</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">Feature Engineering</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">Data Embedding</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">A/B Testing</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">Regularization</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition-all duration-300">Bias-Variance Tradeoff</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</element><element id="fd1d8238-4a78-4a7c-bd09-8537ce91f52c" data-section-id="fd1d8238-4a78-4a7c-bd09-8537ce91f52c">
+
+
+<div id="root">
+    <section id="projects" class="py-20 bg-neutral-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center font-['Poppins'] animate__animated animate__fadeIn">Notable Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- NVIDIA Hackathon Project -->
+                <div class="bg-neutral-700/30 backdrop-blur-sm p-8 rounded-xl border border-neutral-600/30 hover:bg-neutral-700/40 transition-all duration-300 group animate__animated animate__fadeInLeft">
+                    <div class="flex items-start justify-between mb-4">
+                        <h3 class="text-2xl font-bold text-white font-['Poppins']">AI-Based System Design Builder</h3>
+                        <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm">Award Winner</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-neutral-800/40 p-4 rounded-lg">
+                            <p class="text-gray-300 italic">Best Innovation Award at the NVIDIA Hackathon</p>
+                        </div>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-gray-300">Developed a tool to generate system designs workflow based on user queries, leveraging Llama3.2 to recommend optimal components tailored to user needs</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-gray-300">Utilized NVIDIA Workbench to build this interactive solution with visualization and customization features</span>
+                            </li>
+                        </ul>
+                        <div class="flex gap-3 mt-4">
+                            <span class="px-3 py-1 bg-neutral-800/40 text-gray-300 rounded-full text-sm">NVIDIA</span>
+                            <span class="px-3 py-1 bg-neutral-800/40 text-gray-300 rounded-full text-sm">LLM</span>
+                            <span class="px-3 py-1 bg-neutral-800/40 text-gray-300 rounded-full text-sm">System Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- YouTube Recommendation System -->
+                <div class="bg-neutral-700/30 backdrop-blur-sm p-8 rounded-xl border border-neutral-600/30 hover:bg-neutral-700/40 transition-all duration-300 group animate__animated animate__fadeInRight">
+                    <div class="mb-4">
+                        <h3 class="text-2xl font-bold text-white font-['Poppins']">YouTube Video Recommendation System</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-gray-300">Built a recommendation system using collaborative filtering and matrix factorization, enhancing user engagement and content relevance</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 mr-2 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-gray-300">Conducted A/B tests to evaluate the freshness and diversity of recommendations, enhancing user retention</span>
+                            </li>
+                        </ul>
+                        <div class="flex gap-3 mt-4">
+                            <span class="px-3 py-1 bg-neutral-800/40 text-gray-300 rounded-full text-sm">Recommendation Systems</span>
+                            <span class="px-3 py-1 bg-neutral-800/40 text-gray-300 rounded-full text-sm">A/B Testing</span>
+                            <span class="px-3 py-1 bg-neutral-800/40 text-gray-300 rounded-full text-sm">ML</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</element><element id="dc3effa3-f4cd-4b88-a24b-1218701453a4" data-section-id="dc3effa3-f4cd-4b88-a24b-1218701453a4">
+
+
+<div id="root">
+    <section id="contact" class="py-20 bg-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center font-['Poppins'] animate__animated animate__fadeIn">Get In Touch</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Contact Info -->
+                <div class="bg-neutral-800/30 backdrop-blur-sm p-8 rounded-xl border border-neutral-700/30 hover:bg-neutral-800/40 transition-all duration-300 animate__animated animate__fadeInLeft">
+                    <h3 class="text-2xl font-bold text-white mb-6 font-['Poppins']">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <a href="mailto:weginwaratharva99@gmail.com" class="text-gray-300 hover:text-blue-400 transition-all duration-300">weginwaratharva99@gmail.com</a>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <a href="tel:408-592-3474" class="text-gray-300 hover:text-blue-400 transition-all duration-300">408-592-3474</a>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span class="text-gray-300">San Francisco, CA</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="text-white font-semibold mb-4">Professional Profiles</h4>
+                        <div class="flex space-x-6">
+                            <a href="https://www.linkedin.com/in/atharvaweginwar/" target="_blank" class="text-gray-300 hover:text-blue-400 transition-all duration-300">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/Atharva-Weginwar" target="_blank" class="text-gray-300 hover:text-blue-400 transition-all duration-300">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-neutral-800/30 backdrop-blur-sm p-8 rounded-xl border border-neutral-700/30 hover:bg-neutral-800/40 transition-all duration-300 animate__animated animate__fadeInRight">
+                    <h3 class="text-2xl font-bold text-white mb-6 font-['Poppins']">Send a Message</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 bg-neutral-700/30 border border-neutral-600/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 bg-neutral-700/30 border border-neutral-600/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 bg-neutral-700/30 border border-neutral-600/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</element><element id="23ef8139-44a0-4601-bd3f-ce9a545e738f" data-section-id="23ef8139-44a0-4601-bd3f-ce9a545e738f">
+
+
+<div id="root">
+    <footer id="footer" class="py-10 bg-neutral-900 border-t border-neutral-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Logo/Name Section -->
+                <div class="animate__animated animate__fadeIn">
+                    <h3 class="text-2xl font-bold text-white mb-4 font-['Poppins']">Atharva Weginwar</h3>
+                    <p class="text-gray-400">AI Engineer & ML Specialist</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="animate__animated animate__fadeIn" style="animation-delay: 0.2s">
+                    <h4 class="text-lg font-semibold text-white mb-4 font-['Poppins']">Quick Links</h4>
+                    <ul class="space-y-2">
+                        {{#each headerNav}}
+                        <li>
+                            <a href="{{this.link}}" class="text-gray-400 hover:text-blue-400 transition-all duration-300">{{this.label}}</a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+
+                <!-- Social Links -->
+                <div class="animate__animated animate__fadeIn" style="animation-delay: 0.4s">
+                    <h4 class="text-lg font-semibold text-white mb-4 font-['Poppins']">Connect</h4>
+                    <div class="flex space-x-4">
+                        {{#each footerNav}}
+                        <a href="{{this.link}}" class="text-gray-400 hover:text-blue-400 transition-all duration-300">
+                            {{#if (eq this.label "LinkedIn")}}
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                            {{else if (eq this.label "GitHub")}}
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            {{else}}
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            {{/if}}
+                        </a>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-neutral-800 text-center">
+                <p class="text-gray-400">&copy; 2024 Atharva Weginwar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</div>
+</element></div>
+            <div id="page_complete">
+            <script src="/edit/edit.js"></script>
+            <script>
+                console.log('Page complete');
+                
+            </script>
+            </body>
+            </html>
+          
